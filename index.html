@@ -917,6 +917,8 @@
             initReveal();
         });
     </script>
-</body>
+<script>
+(function(){function getCookie(n){var m=document.cookie.match(new RegExp("(^| )"+n+"=([^;]+)"));return m?m[2]:"";}document.addEventListener("click",function(e){var l=e.target.closest("a[href*=\"mercadopago\"]");if(l){var u=new URL(l.href);var fbc=getCookie("_fbc");var fbp=getCookie("_fbp");if(fbc)u.searchParams.set("fbc",fbc);if(fbp)u.searchParams.set("fbp",fbp);var p=new URLSearchParams(window.location.search);var fc=p.get("fbclid");if(fc&&!fbc)u.searchParams.set("fbc","fb.1."+Date.now()+"."+fc);l.href=u.toString();}});})();
+</script></body>
 </html>
 <!-- deployed Wed Mar 25 20:31:47 -03 2026 -->
