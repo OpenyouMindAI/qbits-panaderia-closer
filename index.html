@@ -17,7 +17,7 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Meta Pixel Code -->
+    <!-- Meta Pixel Code + Parameter Builder (client-side) -->
     <script>
       !function(f,b,e,v,n,t,s)
       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -29,6 +29,17 @@
       'https://connect.facebook.net/en_US/fbevents.js');
       fbq('init', '966854009200030');
       fbq('track', 'PageView');
+
+      /* Parameter Builder: capture _fbc and _fbp early + generate from fbclid */
+      (function(){
+        function getCk(n){var m=document.cookie.match(new RegExp("(^| )"+n+"=([^;]+)"));return m?m[2]:"";}
+        function setCk(n,v,d){var e=new Date();e.setTime(e.getTime()+(d||30)*86400000);document.cookie=n+"="+v+";expires="+e.toUTCString()+";path=/;SameSite=Lax";}
+        var fbclid=(new URLSearchParams(window.location.search)).get("fbclid");
+        if(fbclid&&!getCk("_fbc")){setCk("_fbc","fb.1."+Date.now()+"."+fbclid,90);}
+        if(!getCk("_fbp")){setCk("_fbp","fb.1."+Date.now()+"."+Math.floor(1e9*Math.random()),180);}
+        window.__meta_fbc=getCk("_fbc");
+        window.__meta_fbp=getCk("_fbp");
+      })();
     </script>
     <noscript><img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=966854009200030&ev=PageView&noscript=1"
